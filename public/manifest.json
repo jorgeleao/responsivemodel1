@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "responsivemodel1",
+  "name": "Responsive React frontend model, Mark 1",
+  "homepage": "https://jorgeleao.github.io/responsivemodel1",  
   "icons": [
     {
       "src": "favicon.ico",
@@ -21,5 +22,11 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "scripts": {
+      "predeploy": "npm run build",
+      "deploy": "gh-pages -d build",
+      "start": "react-scripts start",
+      "build": "react-scripts build"
+  }
 }
