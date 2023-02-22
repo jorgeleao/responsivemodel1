@@ -1,9 +1,9 @@
-import './App.css';
+import './home.css';
 import Caixadagua from './Caixadagua.png'
 
-function App() {
+function Home() {
   return (
-    <div className="App">
+    <div className="Home">
       <img src={Caixadagua} alt="xpto"/>
       <div className="texto">
       <p>
@@ -37,4 +37,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
