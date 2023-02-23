@@ -1,7 +1,7 @@
 .App {
-    height:190vh;
+    height:125vh;
     text-align: center;
-    background-image: url("vscode.react.low.color.almost.gray.png");
+/*    background-image: url("vscode.react.low.color.almost.gray.png"); */
     background-size: cover;
     background-repeat:no-repeat;
     background-attachment: fixed;
