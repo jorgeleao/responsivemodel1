@@ -94,7 +94,7 @@
 .menuitemselected{
     font-weight:bold;
     font-style:normal;
-    border-bottom:4px solid rgb(149, 176, 252);
+/*    border-bottom:4px solid rgb(149, 176, 252);  */
 }
 .menuitemNOTselected{
     font-weight:normal;
@@ -135,7 +135,7 @@
 }
 
 .spacer{
-    margin-left:30px;
+    margin-left:20px;
 }
 /*
 input{
