@@ -33,9 +33,6 @@ export default function Sinotico(props) {
     <div>
 
     <div className="sinotico">
-        <span style={{fontSize:'1.5em',fontWeight:"200",color:"white"}}><i>Alta Tecnologia Projetos</i></span>
-        <br/>
-        <span style={{fontSize:'1.5em',fontWeight:"500",color:"white"}}>Condomínio Senador Paula</span>
         <div className="common_divcontainer">
           <div style={{gridRow:"3/3",gridColumn:"1/1"}}><Caixadagua estadoBoia={true} colunas='COLUNAS 08 - 01' valor={niveis[0]} valormin='10' valormax='90'/></div>
           <div style={{gridRow:"3/3",gridColumn:"2/2"}}><Caixadagua estadoBoia={false} colunas='COLUNAS 02 - 03' valor={niveis[1]} valormin='10' valormax='90'/></div>

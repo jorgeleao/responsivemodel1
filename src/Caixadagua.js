@@ -9,7 +9,7 @@ export default function Caixadagua(props) {
 
 //======== Fundo da escala =================
     context.fillStyle = "black";
-    context.fillRect(40, 20, 65, 200);
+    context.fillRect(30, 20, 55, 200);
 //==========================================
     if(props.valor>=90){
       context.fillStyle = "red";
@@ -18,28 +18,28 @@ export default function Caixadagua(props) {
     }else{
       context.fillStyle = "blue";
     }
-    context.fillRect(40, 220-2*props.valor, 65, 2*props.valor );
+    context.fillRect(30, 220-2*props.valor, 55, 2*props.valor );
 //==========================================
     context.fillStyle = "black";
 
-    context.moveTo(40, 20);
-    context.lineTo(114, 20);
+    context.moveTo(30, 20);
+    context.lineTo(94, 20);
     context.stroke();
     context.font = "10px monospace";
-    context.fillText("100", 115, 21);
+    context.fillText("100", 95, 21);
 
-    context.moveTo(40, 220);
-    context.lineTo(114, 220);
+    context.moveTo(30, 220);
+    context.lineTo(94, 220);
     context.stroke();
     context.font = "10px monospace";
-    context.fillText("  0", 115, 221);
+    context.fillText("  0", 95, 221);
 
     for(let i=1;i<10;i++){
-      context.moveTo(105, 20+i*20);
-      context.lineTo(114, 20+i*20);
+      context.moveTo(85, 20+i*20);
+      context.lineTo(94, 20+i*20);
       context.stroke();
       context.font = "10px monospace";
-      context.fillText(' '+(100-10*i).toString(), 115, 21+i*20);
+      context.fillText(' '+(100-10*i).toString(), 95, 21+i*20);
     }
   }; // Example taken from https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_usage
 
