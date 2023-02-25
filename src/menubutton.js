@@ -8,7 +8,7 @@ function MenuButton(props) {
     return(
     <div style={{border:"2px solid gray", borderRadius:"13px", backgroundColor:"white",width:"95px",height:"36px"}}>
         <div style={auxStyle}>
-                <span style={{color:"white",position:"relative",top:"14px",fontWeight:"bold"}}>{props.titulo}</span>
+                <span style={{color:props.titleColor,position:"relative",top:"14px",fontWeight:"bold"}}>{props.titulo}</span>
         </div>
     </div>
     )

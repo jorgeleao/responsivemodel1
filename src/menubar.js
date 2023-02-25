@@ -13,17 +13,26 @@ export default function Menubar() {
                 <div className="search-catalog">
                     <Link to="/" className={location.pathname === "/" ?
                         "spacer menuitemselected" : "spacer menuitemNOTselected"}>
-                            <MenuButton bgcolor={location.pathname === "/" ? "BLUE" : "gray"} titulo="SINÓTICO"/>
+                            <MenuButton 
+                                titleColor={location.pathname === "/" ? "white" : "gray"} 
+                                bgcolor={location.pathname === "/" ? "blue" : "rgb(42, 42, 42)"} 
+                                titulo="SINÓTICO"/>
                     </Link>
 
                     <Link to="/grafico" className={location.pathname === "/grafico" ?
                                             "spacer menuitemselected" : "spacer menuitemNOTselected"}>
-                            <MenuButton bgcolor={location.pathname === "/grafico" ? "green" : "gray"} titulo="GRÁFICO"/>
+                            <MenuButton
+                                titleColor={location.pathname === "/grafico" ? "white" : "gray"}  
+                                bgcolor={location.pathname === "/grafico" ? "green" : "rgb(42, 42, 42)"} 
+                                titulo="GRÁFICO"/>
                     </Link>
 
                     <Link to="/events" className={location.pathname === "/events" ?
                                             "spacer menuitemselected" : "spacer menuitemNOTselected"}>
-                            <MenuButton bgcolor={location.pathname === "/events" ? "red" : "gray"} titulo="EVENTOS"/>
+                            <MenuButton 
+                                titleColor={location.pathname === "/events" ? "white" : "gray"} 
+                                bgcolor={location.pathname === "/events" ? "red" : "rgb(42, 42, 42)"} 
+                                titulo="EVENTOS"/>
                     </Link>
                     
                 </div>
