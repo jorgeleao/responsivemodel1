@@ -26,7 +26,7 @@ export default function Caixadagua(props) {
     context.lineTo(94, 5);
     context.stroke();
     context.font = "10px monospace";
-    context.fillText("100", 95, 6);
+    context.fillText("100", 95, 7);
 
     context.moveTo(30, 205);
     context.lineTo(94, 205);
