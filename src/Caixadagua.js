@@ -4,12 +4,12 @@ import Canvas from './Canvas';
 
 export default function Caixadagua(props) {
   const draw = (context) => {
-//    context.fillStyle = "rgb(186, 186, 186)";
-//    context.fillRect(0, 0, 130, 145);
+    context.fillStyle = "rgb(186, 186, 186)";
+    context.fillRect(0, 0, 149, 210);
 
 //======== Fundo da escala =================
     context.fillStyle = "black";
-    context.fillRect(30, 5, 55, 185);
+    context.fillRect(30, 5, 55, 200);
 //==========================================
     if(props.valor>=90){
       context.fillStyle = "red";

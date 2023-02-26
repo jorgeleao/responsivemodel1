@@ -1,13 +1,44 @@
-import React, { useState }  from 'react';
+import React, { useEffect, useState } from "react";
 import './Sinotico.css';
 import './common.css'
 import Caixadagua from './Caixadagua';
 
+let interval = undefined;
+let goingUP = true
+
 export default function Sinotico(props) {
-  let niveisIniciais = [10,20,30,40,50]
+  const [running, setRunning] = useState(true);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    if (running) {
+      interval = setInterval(() => {
+        setProgress((prev) => prev + 1.);
+      }, 1000);
+    } else {
+      clearInterval(interval);
+      setProgress(0);
+    }
+  }, [running]);
+
+  useEffect(() => {
+    console.log('=== progress='+progress)
+    if(niveis[0]<99 && goingUP){
+      nivelUP(0)
+    }else if(niveis[0]>=100 && goingUP){
+      goingUP=!goingUP
+    }else if(niveis[0]>0 && !goingUP){
+      nivelDW(0)
+    }else if(niveis[0]<=0 && !goingUP){
+      goingUP=!goingUP
+    }  
+    if(progress>100) setProgress(0)
+  }, [progress]);
+
+  let niveisIniciais = [0,20,30,40,50]
   let[ niveis,setNiveis] = useState(niveisIniciais)
 
-  let nivelUP = (caixa) => {
+  const nivelUP = (caixa) => {
     const proxNiveis = niveis.map((nivel,i) => {
       if(i === caixa){
         return (nivel+5)>100?100:nivel+5;
@@ -18,7 +49,7 @@ export default function Sinotico(props) {
     setNiveis(proxNiveis)
   }
 
-  let nivelDW = (caixa) => {
+  const nivelDW = (caixa) => {
     const proxNiveis = niveis.map((nivel,i) => {
       if(i === caixa){
         return (nivel-5)<0?0:nivel-5;

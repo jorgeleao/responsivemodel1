@@ -13,6 +13,8 @@ return (
         <span style={{fontSize:'1.5em',fontWeight:"200",color:"white"}}><i>Alta Tecnologia Projetos</i></span>
         <br/>
         <span style={{fontSize:'1.5em',fontWeight:"500",color:"white"}}>Condomínio Senador Paula</span>
+        <br/>
+        <br/>
 
         <BrowserRouter  basename={'/'}>
           <Menubar />
