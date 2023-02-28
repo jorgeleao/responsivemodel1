@@ -1,7 +1,7 @@
 .Events{
     width: 95%;
     max-width:675px;
-    min-height: 60vh;
+    height: 80vh;
     border: 2px solid white;
     border-radius: 5px;
     margin-left:auto;
@@ -12,5 +12,9 @@
     display:block;
   
     min-height: xxx;
-    overflow: hidden;
-}
+    overflow: scroll;
+  }
+
+  .eventos1{
+    width:600px;
+  }

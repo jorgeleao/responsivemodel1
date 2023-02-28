@@ -1,96 +1,64 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import './Sinotico.css';
 import './common.css'
 import Caixadagua from './Caixadagua';
 
-let interval = undefined;
-let goingUP = true
+let interval = undefined
+const timeInterval = 200
+let initialGoingUP = [true,false,true,false,true]
+const initialAmount = [5.0,4.0,3.0,2.0,1.0]
 
 export default function Sinotico(props) {
-  const [running, setRunning] = useState(true);
-  const [progress, setProgress] = useState(0);
+  let niveisIniciais = [50,20,30,40,50]
+  const [niveis, setNiveis] = useState(niveisIniciais)
+  const [goingUP, setGoingUP] = useState(initialGoingUP)
 
-  useEffect(() => {
-    if (running) {
-      interval = setInterval(() => {
-        setProgress((prev) => prev + 1.);
-      }, 1000);
-    } else {
-      clearInterval(interval);
-      setProgress(0);
+  const handleChangeLevel = useCallback((amount) => {
+    function notGoingUP(cx){
+      const nextGoingUP = goingUP.map((going,i) => {
+        return (i===cx)?!going:going
+      })
+      setGoingUP(nextGoingUP)
     }
-  }, [running]);
+
+    const proxNiveis = niveis.map((nivel,i) => {
+      let level = 0
+      if(goingUP[i]){
+        if((nivel+amount[i])>100)notGoingUP(i)
+        level = ((nivel+amount[i])>100?100:nivel+amount[i])
+      }else if(!goingUP[i]){
+        if((nivel-amount[i])<0)notGoingUP(i)
+        level = ((nivel-amount[i])<0?0:nivel-amount[i])
+      }
+      return level
+    })  
+    console.log(proxNiveis)
+    setNiveis(proxNiveis)
+  },[niveis,goingUP])
 
   useEffect(() => {
-    console.log('=== progress='+progress)
-    if(niveis[0]<99 && goingUP){
-      nivelUP(0)
-    }else if(niveis[0]>=100 && goingUP){
-      goingUP=!goingUP
-    }else if(niveis[0]>0 && !goingUP){
-      nivelDW(0)
-    }else if(niveis[0]<=0 && !goingUP){
-      goingUP=!goingUP
-    }  
-    if(progress>100) setProgress(0)
-  }, [progress]);
-
-  let niveisIniciais = [0,20,30,40,50]
-  let[ niveis,setNiveis] = useState(niveisIniciais)
-
-  const nivelUP = (caixa) => {
-    const proxNiveis = niveis.map((nivel,i) => {
-      if(i === caixa){
-        return (nivel+5)>100?100:nivel+5;
-      }else{
-        return nivel;
-      }
-    })
-    setNiveis(proxNiveis)
-  }
-
-  const nivelDW = (caixa) => {
-    const proxNiveis = niveis.map((nivel,i) => {
-      if(i === caixa){
-        return (nivel-5)<0?0:nivel-5;
-      }else{
-        return nivel;
-      }
-    })
-    setNiveis(proxNiveis)
-  }
+        interval = setInterval(() => {
+          handleChangeLevel(initialAmount)
+      }, timeInterval);
+      
+      return () => clearInterval(interval)
+  }, [handleChangeLevel]);
 
   return (
     <div>
 
     <div className="sinotico">
         <div className="common_divcontainer">
-          <div style={{gridRow:"3/3",gridColumn:"1/1"}}><Caixadagua estadoBoia={true} colunas='COLUNAS 08 - 01' valor={niveis[0]} valormin='10' valormax='90'/></div>
-          <div style={{gridRow:"3/3",gridColumn:"2/2"}}><Caixadagua estadoBoia={false} colunas='COLUNAS 02 - 03' valor={niveis[1]} valormin='10' valormax='90'/></div>
-          <div style={{gridRow:"2/4",gridColumn:"3/3"}}><Caixadagua estadoBoia={true} colunas='CAIXA CENTRAL' valor={niveis[2]} valormin='10' valormax='90'/></div>
-          <div style={{gridRow:"3/3",gridColumn:"4/4"}}><Caixadagua estadoBoia={false} colunas='COLUNAS 04 - 05' valor={niveis[3]} valormin='10' valormax='90'/></div>
-          <div style={{gridRow:"3/3",gridColumn:"5/5"}}><Caixadagua estadoBoia={false} colunas='COLUNAS 06 - 07' valor={niveis[4]} valormin='10' valormax='90'/></div>
-          
-          <div style={{gridRow:"4/4",gridColumn:"1/1",textAlign:'center'}}>
-            <button style={{height:'30px'}} onClick={()=>nivelUP(0)}>Up</button> 
-            <button style={{height:'30px'}} onClick={()=>nivelDW(0)}>Dw</button>
-          </div>
-          <div style={{gridRow:"4/4",gridColumn:"2/2",textAlign:'center'}}>
-            <button style={{height:'30px'}} onClick={()=>nivelUP(1)}>Up</button> 
-            <button style={{height:'30px'}} onClick={()=>nivelDW(1)}>Dw</button>
-          </div>
-          <div style={{gridRow:"4/4",gridColumn:"3/3",textAlign:'center'}}>
-            <button style={{height:'30px'}} onClick={()=>nivelUP(2)}>Up</button> 
-            <button style={{height:'30px'}} onClick={()=>nivelDW(2)}>Dw</button>
-          </div>
-          <div style={{gridRow:"4/4",gridColumn:"4/4",textAlign:'center'}}>
-            <button style={{height:'30px'}} onClick={()=>nivelUP(3)}>Up</button> 
-            <button style={{height:'30px'}} onClick={()=>nivelDW(3)}>Dw</button>
-          </div>
-          <div style={{gridRow:"4/4",gridColumn:"5/5",textAlign:'center'}}>
-            <button style={{height:'30px'}} onClick={()=>nivelUP(4)}>Up</button> 
-            <button style={{height:'30px'}} onClick={()=>nivelDW(4)}>Dw</button>
-          </div>
+          <div style={{gridRow:"3/3",gridColumn:"1/1"}}>
+            <Caixadagua estadoBoia={(niveis[0]>=95)?false:true} colunas='COLUNAS 08 - 01' valor={niveis[0]} valormin='10' valormax='90'/></div>
+          <div style={{gridRow:"3/3",gridColumn:"2/2"}}>
+            <Caixadagua estadoBoia={(niveis[1]>=95)?false:true} colunas='COLUNAS 02 - 03' valor={niveis[1]} valormin='10' valormax='90'/></div>
+          <div style={{gridRow:"2/4",gridColumn:"3/3"}}>
+            <Caixadagua estadoBoia={(niveis[2]>=95)?false:true} colunas='CAIXA CENTRAL' valor={niveis[2]} valormin='10' valormax='90'/></div>
+          <div style={{gridRow:"3/3",gridColumn:"4/4"}}>
+            <Caixadagua estadoBoia={(niveis[3]>=95)?false:true} colunas='COLUNAS 04 - 05' valor={niveis[3]} valormin='10' valormax='90'/></div>
+          <div style={{gridRow:"3/3",gridColumn:"5/5"}}>
+            <Caixadagua estadoBoia={(niveis[4]>=95)?false:true} colunas='COLUNAS 06 - 07' valor={niveis[4]} valormin='10' valormax='90'/></div>
         </div>
     </div>
 
