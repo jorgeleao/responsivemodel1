@@ -37,6 +37,12 @@ export default function Menubar() {
                     
                 </div>
             </div>
+            <div className="companyName">
+                <a href="https://www.altatecnologiaprojetos.com.br" rel="noreferrer" target="_blank"
+                   style={{fontSize:'1.5em',fontStyle:'italic',fontWeight:"200",color:"white"}}>
+                    Alta Tecnologia Projetos
+                </a>
+            </div>
         </div >
     );
 }

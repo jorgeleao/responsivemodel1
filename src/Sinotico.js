@@ -37,7 +37,7 @@ export default function Sinotico(props) {
   },[niveis,goingUP])
 
   useEffect(() => {
-        interval = setInterval(() => {
+      interval = setInterval(() => {
           handleChangeLevel(initialAmount)
       }, timeInterval);
       

@@ -5,10 +5,10 @@
     margin:0 auto;
     box-sizing: border-box;
     width:900px;
-/*
-    background-image:url("so.bomba.png");
+
+    background-image:url("tubulacoes2.png");
     background-size: cover;
-*/    
+    
 }
 .caixacoluna{
     grid-column: 2/1;

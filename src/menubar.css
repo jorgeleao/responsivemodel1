@@ -16,7 +16,10 @@
     background: -o-linear-gradient(#585858, #2c2c2c); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#585858, #2c2c2c); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#585858, #2c2c2c); /* Standard syntax (must be last) */    
-
+    padding-left:45px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
 
 /*    
     position:fixed;
@@ -30,6 +33,9 @@
     font-weight: normal;
     color:white;
 */    
+}
+.companyName{
+    padding-right:150px;
 }
 
 @media only screen and (max-width: 525px) {
@@ -135,7 +141,7 @@
 }
 
 .spacer{
-    margin-left:5px;
+    margin-left:0px;
 }
 /*
 input{
