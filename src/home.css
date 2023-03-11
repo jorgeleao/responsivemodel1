@@ -11,19 +11,51 @@
   color:white;
   background-color: rgba(0,0,0,0.5);
   display:block;
-
-  min-height: xxx;
   overflow: hidden;
 }
-
+.caixa1{
+  padding:5px;
+}
+.threeBoxes{
+  display:flex;
+  justify-content: space-between;
+}
 img{
   width:100%;
   height:fit-content;
-  padding-left:-1em;
-  border-bottom:1px solid white;
+  padding-left:0;
+/*  border-bottom:1px solid white; */
 }
 
 .texto{
   padding:1em;
   margin-top:-2em;
 }
+
+@media only screen and (max-width: 419px) {
+  .Home{
+    width: 95%;
+    max-width:600px;
+    min-height: 85vh;
+    border: 2px solid white;
+    border-radius: 5px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    color:white;
+    background-color: rgba(0,0,0,0.5);
+    display:block;
+    overflow: hidden;
+  }
+    .threeBoxes{
+    display:flex;
+    flex-direction: column;
+  }
+  img{
+    width:50%;
+    height:fit-content;
+    padding-left:0;
+  /*  border-bottom:1px solid white; */
+  }
+  }
