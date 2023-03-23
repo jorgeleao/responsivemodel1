@@ -1,24 +1,5 @@
-.Home{
-  width: 95%;
-  max-width:600px;
-  min-height: 85vh;
-  border: 2px solid white;
-  border-radius: 5px;
-  margin-left:auto;
-  margin-right:auto;
-  margin-top: 10vh;
-  margin-bottom: 10vh;
-  color:white;
-  background-color: rgba(0,0,0,0.5);
-  display:block;
-  overflow: hidden;
-}
 .caixa1{
   padding:5px;
-}
-.threeBoxes{
-  display:flex;
-  justify-content: space-between;
 }
 img{
   width:100%;
@@ -30,9 +11,31 @@ img{
 .texto{
   padding:1em;
   margin-top:-2em;
+  color:white;
 }
+/*========= BIG SCREEN =========*/
+@media only screen and (min-width: 450px) {
+  .Home{
+    width: 95%;
+    max-width:600px;
+    min-height: 85vh;
+    margin-top: 10vh;
+    border: 2px solid white;
+    border-radius: 5px;
+    margin-left:auto;
+    margin-right:auto;
+    background-color: rgba(0,0,0,0.5);
+    display:block;
+    overflow: hidden;
+  }
+  .threeBoxes{
+    display:flex;
+    justify-content: space-between;
+  }
+  }
 
-@media only screen and (max-width: 419px) {
+/*========= small screen =========*/
+@media only screen and (max-width: 450px) {
   .Home{
     width: 95%;
     max-width:600px;
@@ -41,8 +44,8 @@ img{
     border-radius: 5px;
     margin-left:auto;
     margin-right:auto;
-    margin-top: 10vh;
-    margin-bottom: 10vh;
+    margin-top: 12%;  
+    margin-bottom: 30px;
     color:white;
     background-color: rgba(0,0,0,0.5);
     display:block;

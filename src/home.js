@@ -3,6 +3,7 @@ import Caixadagua from './uma-caixadagua.png'
 
 function Home() {
   return (
+    <div>
     <div className="Home">
       <div className="threeBoxes">
         <div className="caixa1">
@@ -49,8 +50,10 @@ function Home() {
         fugiat quo voluptas nulla pariatur?
         </p>
       </div>
-    </div>
-  );
+      </div>
+      <div style={{height:'1em'}}>&nbsp;</div>
+      </div>
+      );
 }
 
 export default Home;
